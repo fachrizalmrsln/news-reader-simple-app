@@ -42,11 +42,6 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
         initializeObserver()
     }
 
-    override fun onResume() {
-        super.onResume()
-        getDataListBookmark()
-    }
-
     override fun setupComponent() {
         initializeNewsList()
         initializeNewsListBookmark()
@@ -77,6 +72,15 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
         viewModel.newsListResponse.observe(this) { response ->
             mTotalPage = response.data.nextPage.getTotalPage()
             newsListAdapter.insertData(response.data.rows)
+        }
+        viewModel.getDataBookmarkList().observe(this) { newsListBookmark ->
+            if (newsListBookmark.isNullOrEmpty()) {
+                bookmarkIsEmpty = true
+                checkBookmarkListState()
+            } else {
+                newsListBookmarkAdapter.insertData(newsListBookmark)
+                bookmarkIsEmpty = false
+            }
         }
     }
 
@@ -140,8 +144,13 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
 
     private fun checkBookmarkListState() {
         if (bookmarkIsEmpty) {
-            binding.tvEmptyBookmark.visible()
-            binding.rvNewsBookmark.gone()
+            if (isBookmarkListShow) {
+                binding.tvEmptyBookmark.visible()
+                binding.rvNewsBookmark.gone()
+            } else {
+                binding.tvEmptyBookmark.gone()
+                binding.rvNewsBookmark.gone()
+            }
         } else {
             binding.tvEmptyBookmark.gone()
             binding.rvNewsBookmark.visible()
@@ -214,18 +223,6 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
             coverPic = data.coverPic?.get(0)
         )
         viewModel.bookmarkingData(dataBookmark)
-    }
-
-    private fun getDataListBookmark() {
-        viewModel.getDataBookmarkList().observe(this) { newsListBookmark ->
-            bookmarkIsEmpty = if (newsListBookmark.isNullOrEmpty()) {
-                checkBookmarkListState()
-                true
-            } else {
-                newsListBookmarkAdapter.insertData(newsListBookmark)
-                false
-            }
-        }
     }
 
     private fun unBookmarkingItem(data: NewsListBookmarkEntity) {
