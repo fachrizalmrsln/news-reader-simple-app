@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="News_Reader_Simple.app" target="1.8" />
+      <module name="News_Reader_Simple.component.base" target="1.8" />
+      <module name="News_Reader_Simple.component.shared_ui" target="1.8" />
+      <module name="News_Reader_Simple.features.news-api" target="1.8" />
+      <module name="News_Reader_Simple.features.news_data" target="1.8" />
+      <module name="News_Reader_Simple.features.news_detail" target="1.8" />
+      <module name="News_Reader_Simple.features.news_list" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

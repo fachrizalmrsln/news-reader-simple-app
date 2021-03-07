@@ -1,0 +1,11 @@
+apply from: "$rootProject.rootDir/dependencies-common.gradle"
+
+android {
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation project(Modules.base)
+}

@@ -1,0 +1,8 @@
+include ':features:news_data'
+include ':component:network'
+include ':features:news_detail'
+include ':features:news_list'
+include ':component:shared_ui'
+include ':component:base'
+include ':app'
+rootProject.name = "News Reader Simple"

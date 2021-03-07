@@ -1,0 +1,8 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply from: "$rootProject.rootDir/dependencies-versions.gradle"
+
+dependencies {
+    implementation libraries.kotlin
+}
+

@@ -1,0 +1,52 @@
+apply from: "$rootProject.rootDir/dependencies-common.gradle"
+
+android {
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://www.cnnindonesia.com/ucnews/"'
+        }
+        release {
+            buildConfigField 'String', 'BASE_URL', '"https://www.cnnindonesia.com/ucnews/"'
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    api libraries.appCompact
+    api libraries.designMaterial
+    api libraries.constrainLayout
+    api libraries.cardview
+    api libraries.recyclerview
+    api libraries.coroutines
+    api libraries.timber
+    api libraries.timeAgo
+    api libraries.glide
+    api libraries.gson
+    api libraries.retrofit
+    api libraries.koinViewModel
+    api libraries.koin
+    api libraries.skeleton
+    api libraries.swipeLayout
+    api AndroidKTX.core
+    api AndroidKTX.fragment
+    api splittiesLibrary.activity
+    api splittiesLibrary.fragment
+    api splittiesLibrary.alertDialogAppCompact
+    api splittiesLibrary.dimension
+    api splittiesLibrary.toast
+    api splittiesLibrary.view
+    api splittiesLibrary.recycleView
+    implementation libraries.gsonConverter
+    implementation libraries.loggingInt
+
+    api project(Modules.network)
+
+    testImplementation testingLibrary.jUnit
+    androidTestImplementation testingLibrary.jUnitX
+    androidTestImplementation testingLibrary.espresso
+}

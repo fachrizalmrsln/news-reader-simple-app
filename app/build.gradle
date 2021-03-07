@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: 'kotlin-kapt'
+apply from: "$rootProject.rootDir/dependencies-versions.gradle"
+
+android {
+
+    compileSdkVersion appConfig.compileSdkVersion
+    buildToolsVersion appConfig.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.fachrizalmrsln.newsreadersimple"
+        minSdkVersion appConfig.minSdkVersion
+        targetSdkVersion appConfig.targetSdkVersion
+        versionCode appConfig.versionCode
+        versionName appConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures{
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation project(Modules.base)
+    implementation project(Modules.sharedUI)
+    implementation project(Modules.newsData)
+    implementation project(Modules.newsList)
+    implementation project(Modules.newsDetail)
+    implementation project(Modules.network)
+
+    implementation libraries.kotlin
+
+    testImplementation testingLibrary.jUnit
+    androidTestImplementation testingLibrary.jUnitX
+    androidTestImplementation testingLibrary.espresso
+}

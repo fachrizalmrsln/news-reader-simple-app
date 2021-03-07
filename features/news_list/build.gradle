@@ -1,0 +1,23 @@
+apply from: "$rootProject.rootDir/dependencies-common.gradle"
+apply plugin: 'kotlin-android'
+
+android {
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation project(Modules.base)
+    implementation project(Modules.sharedUI)
+    implementation project(Modules.newsData)
+
+    implementation libraries.roomRunTime
+    implementation libraries.roomKtx
+    kapt libraries.roomKapt
+    implementation libraries.pagging
+
+    testImplementation testingLibrary.jUnit
+    androidTestImplementation testingLibrary.jUnitX
+    androidTestImplementation testingLibrary.espresso
+}

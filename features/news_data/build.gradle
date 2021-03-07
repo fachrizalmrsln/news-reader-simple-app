@@ -1,0 +1,8 @@
+apply from: "$rootProject.rootDir/dependencies-common-modules.gradle"
+
+dependencies {
+    api project(Modules.network)
+
+    implementation libraries.gson
+    implementation libraries.retrofit
+}
