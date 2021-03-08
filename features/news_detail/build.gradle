@@ -10,7 +10,6 @@ android {
 dependencies {
     implementation project(Modules.base)
     implementation project(Modules.sharedUI)
-    implementation project(Modules.newsList)
 
     testImplementation testingLibrary.jUnit
     androidTestImplementation testingLibrary.jUnitX

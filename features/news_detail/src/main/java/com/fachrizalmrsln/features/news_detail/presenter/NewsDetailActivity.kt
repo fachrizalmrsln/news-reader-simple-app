@@ -8,13 +8,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.lifecycle.LiveData
 import com.fachrizalmrsln.component.base.activity.BaseViewBindingActivity
+import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
 import com.fachrizalmrsln.component.base.extensions.gone
 import com.fachrizalmrsln.component.base.extensions.loadImageFromAssets
 import com.fachrizalmrsln.component.base.extensions.makeFirstIndexCapitalize
 import com.fachrizalmrsln.component.base.extensions.visible
 import com.fachrizalmrsln.features.news_detail.R
 import com.fachrizalmrsln.features.news_detail.databinding.ActivityNewsDetailBinding
-import com.fachrizalmrsln.features.news_list.database.NewsListBookmarkEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsDetailActivity : BaseViewBindingActivity<ActivityNewsDetailBinding>() {
@@ -106,7 +106,7 @@ class NewsDetailActivity : BaseViewBindingActivity<ActivityNewsDetailBinding>() 
     }
 
     private fun bookmarkingData() {
-        val dataBookmark = NewsListBookmarkEntity(
+        val dataBookmark = NewsBookmarkEntity(
             id = intent.getIntExtra(DATA_ID, 0),
             category = intent.getStringExtra(DATA_CATEGORY) ?: "",
             detailUrl = intent.getStringExtra(DATA_DETAIL) ?: "",
@@ -118,12 +118,12 @@ class NewsDetailActivity : BaseViewBindingActivity<ActivityNewsDetailBinding>() 
         viewModel.bookmarkingData(dataBookmark)
     }
 
-    private fun getDataBookmarkDetail(dataID: Int): LiveData<NewsListBookmarkEntity> {
+    private fun getDataBookmarkDetail(dataID: Int): LiveData<NewsBookmarkEntity> {
         return viewModel.getDataBookmarkDetail(dataID)
     }
 
     private fun unBookmarkingData() {
-        val dataBookmark = NewsListBookmarkEntity(
+        val dataBookmark = NewsBookmarkEntity(
             id = intent.getIntExtra(DATA_ID, 0),
             category = intent.getStringExtra(DATA_CATEGORY) ?: "",
             detailUrl = intent.getStringExtra(DATA_DETAIL) ?: "",

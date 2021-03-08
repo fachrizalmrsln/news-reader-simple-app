@@ -17,6 +17,8 @@ android {
 
 dependencies {
 
+    api project(Modules.network)
+
     api libraries.appCompact
     api libraries.designMaterial
     api libraries.constrainLayout
@@ -32,6 +34,7 @@ dependencies {
     api libraries.koin
     api libraries.skeleton
     api libraries.swipeLayout
+    api libraries.pagging
     api AndroidKTX.core
     api AndroidKTX.fragment
     api splittiesLibrary.activity
@@ -41,10 +44,12 @@ dependencies {
     api splittiesLibrary.toast
     api splittiesLibrary.view
     api splittiesLibrary.recycleView
+
     implementation libraries.gsonConverter
     implementation libraries.loggingInt
-
-    api project(Modules.network)
+    implementation libraries.roomRunTime
+    implementation libraries.roomKtx
+    kapt libraries.roomKapt
 
     testImplementation testingLibrary.jUnit
     androidTestImplementation testingLibrary.jUnitX

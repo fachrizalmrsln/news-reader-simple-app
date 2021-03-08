@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fachrizalmrsln.component.base.activity.BaseViewBindingActivity
+import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
 import com.fachrizalmrsln.component.base.extensions.getTotalPage
 import com.fachrizalmrsln.component.base.extensions.gone
 import com.fachrizalmrsln.component.base.extensions.loadImageFromAssets
@@ -12,7 +13,6 @@ import com.fachrizalmrsln.component.base.navigation.IAppNavigation
 import com.fachrizalmrsln.component.base.util.RecyclerViewPaging
 import com.fachrizalmrsln.features.news_data.response.Row
 import com.fachrizalmrsln.features.news_list.R
-import com.fachrizalmrsln.features.news_list.database.NewsListBookmarkEntity
 import com.fachrizalmrsln.features.news_list.databinding.ActivityNewsListBinding
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
@@ -213,7 +213,7 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
     }
 
     private fun bookmarkingItem(data: Row) {
-        val dataBookmark = NewsListBookmarkEntity(
+        val dataBookmark = NewsBookmarkEntity(
             id = data.id,
             title = data.title,
             category = data.category,
@@ -225,8 +225,8 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
         viewModel.bookmarkingData(dataBookmark)
     }
 
-    private fun unBookmarkingItem(data: NewsListBookmarkEntity) {
-        val dataBookmark = NewsListBookmarkEntity(
+    private fun unBookmarkingItem(data: NewsBookmarkEntity) {
+        val dataBookmark = NewsBookmarkEntity(
             id = data.id,
             title = data.title,
             category = data.category,

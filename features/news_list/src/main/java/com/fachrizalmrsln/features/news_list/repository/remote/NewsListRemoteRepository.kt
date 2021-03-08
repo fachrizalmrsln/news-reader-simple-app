@@ -5,7 +5,6 @@ import com.fachrizalmrsln.component.base.repository.BaseRepository
 import com.fachrizalmrsln.component.network.NetworkResult
 import com.fachrizalmrsln.features.news_data.api.INewsAPI
 import com.fachrizalmrsln.features.news_data.response.NewsListResponse
-import com.fachrizalmrsln.features.news_list.database.NewsListBookmarkEntity
 
 class NewsListRemoteRepository(
     private val newsAPI: INewsAPI,

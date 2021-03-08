@@ -1,14 +1,14 @@
 package com.fachrizalmrsln.features.news_detail.repository.local
 
 import androidx.lifecycle.LiveData
-import com.fachrizalmrsln.features.news_list.database.NewsListBookmarkEntity
+import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
 
 interface INewsDetailLocalRepository {
 
-    fun bookmarkingData(dataBookmark: NewsListBookmarkEntity)
+    fun bookmarkingData(dataBookmark: NewsBookmarkEntity)
 
-    fun unBookmarkingData(dataBookmark: NewsListBookmarkEntity)
+    fun unBookmarkingData(dataBookmark: NewsBookmarkEntity)
 
-    fun getDataBookmarkDetail(dataID: Int): LiveData<NewsListBookmarkEntity>
+    fun getDataBookmarkDetail(dataID: Int): LiveData<NewsBookmarkEntity>
     
 }

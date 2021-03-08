@@ -7,31 +7,30 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
 import com.fachrizalmrsln.component.base.extensions.convertTimeStamp
 import com.fachrizalmrsln.component.base.extensions.loadImage
 import com.fachrizalmrsln.component.base.extensions.loadImageFromAssets
-import com.fachrizalmrsln.features.news_data.response.Row
 import com.fachrizalmrsln.features.news_list.R
-import com.fachrizalmrsln.features.news_list.database.NewsListBookmarkEntity
 import com.github.marlonlom.utilities.timeago.TimeAgo
 import splitties.views.onClick
 
 class NewsListBookmarkAdapter :
     RecyclerView.Adapter<NewsListBookmarkAdapter.NewsListBookmarkViewHolder>() {
 
-    private val mNewsListDataBookmark = mutableListOf<NewsListBookmarkEntity>()
-    private lateinit var mOnItemClickHandler: (data: NewsListBookmarkEntity) -> Unit
-    private lateinit var mOnItemBookmarkClickHandler: (data: NewsListBookmarkEntity, position: Int, size: Int) -> Unit
+    private val mNewsListDataBookmark = mutableListOf<NewsBookmarkEntity>()
+    private lateinit var mOnItemClickHandler: (data: NewsBookmarkEntity) -> Unit
+    private lateinit var mOnItemBookmarkClickHandler: (data: NewsBookmarkEntity, position: Int, size: Int) -> Unit
 
-    fun onItemClickHandler(listener: (data: NewsListBookmarkEntity) -> Unit) {
+    fun onItemClickHandler(listener: (data: NewsBookmarkEntity) -> Unit) {
         mOnItemClickHandler = listener
     }
 
-    fun onItemBookmarkClickHandler(listener: (data: NewsListBookmarkEntity, position: Int, size: Int) -> Unit) {
+    fun onItemBookmarkClickHandler(listener: (data: NewsBookmarkEntity, position: Int, size: Int) -> Unit) {
         mOnItemBookmarkClickHandler = listener
     }
 
-    fun insertData(data: List<NewsListBookmarkEntity>) {
+    fun insertData(data: List<NewsBookmarkEntity>) {
         mNewsListDataBookmark.clear()
         mNewsListDataBookmark.addAll(data)
         notifyDataSetChanged()
@@ -78,11 +77,11 @@ class NewsListBookmarkAdapter :
         private var bookmarkState = false
 
         fun bindData(
-            data: NewsListBookmarkEntity,
+            data: NewsBookmarkEntity,
             position: Int,
             size: Int,
-            listener: (data: NewsListBookmarkEntity) -> Unit,
-            bookmarkListener: (data: NewsListBookmarkEntity, position: Int, size: Int) -> Unit
+            listener: (data: NewsBookmarkEntity) -> Unit,
+            bookmarkListener: (data: NewsBookmarkEntity, position: Int, size: Int) -> Unit
         ) {
             val imageBackDrop = data.coverPic
 

@@ -1,33 +1,35 @@
-package com.fachrizalmrsln.features.news_list.database
+package com.fachrizalmrsln.newsreadersimple.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
+import com.fachrizalmrsln.component.base.database.NewsDAO
 
 @Database(
-    entities = [NewsListBookmarkEntity::class],
+    entities = [NewsBookmarkEntity::class],
     version = 1
 )
-abstract class NewsListDatabase : RoomDatabase() {
+abstract class NewsAppDatabase : RoomDatabase() {
 
-    abstract fun newsListDao(): NewsListDAO
+    abstract fun newsDao(): NewsDAO
 
     companion object {
         private const val DatabaseName = "NewsDB"
-        var INSTANCE: NewsListDatabase? = null
+        var INSTANCE: NewsAppDatabase? = null
 
-        fun getDatabase(context: Context): NewsListDatabase {
+        fun getDatabase(context: Context): NewsAppDatabase {
             if (INSTANCE == null) {
                 synchronized(Database::class.java) {
                     INSTANCE = Room.databaseBuilder(
                         context,
-                        NewsListDatabase::class.java,
+                        NewsAppDatabase::class.java,
                         DatabaseName
                     ).build()
                 }
             }
-            return INSTANCE as NewsListDatabase
+            return INSTANCE as NewsAppDatabase
         }
     }
 

@@ -1,10 +1,10 @@
-package com.fachrizalmrsln.features.news_list.database
+package com.fachrizalmrsln.component.base.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "news_list_bookmark")
-data class NewsListBookmarkEntity(
+data class NewsBookmarkEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
     val title: String,

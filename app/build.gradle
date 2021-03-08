@@ -46,6 +46,8 @@ dependencies {
     implementation project(Modules.newsDetail)
     implementation project(Modules.network)
 
+    implementation libraries.roomRunTime
+    kapt libraries.roomKapt
     implementation libraries.kotlin
 
     testImplementation testingLibrary.jUnit

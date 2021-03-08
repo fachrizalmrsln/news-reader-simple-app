@@ -12,11 +12,6 @@ dependencies {
     implementation project(Modules.sharedUI)
     implementation project(Modules.newsData)
 
-    implementation libraries.roomRunTime
-    implementation libraries.roomKtx
-    kapt libraries.roomKapt
-    implementation libraries.pagging
-
     testImplementation testingLibrary.jUnit
     androidTestImplementation testingLibrary.jUnitX
     androidTestImplementation testingLibrary.espresso
