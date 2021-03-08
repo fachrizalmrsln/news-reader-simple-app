@@ -13,7 +13,6 @@ News Reader Simple App is just news-based application. I'm using this [API](http
 
 # Teach Stack
   - [Kotlin](https://developer.android.com/kotlin)
-  - [Offline First](https://joshuapark82.medium.com/android-offline-first-architecture-using-mvvm-with-flow-f7a09a7aa281)
   - [Endless Scroll View](https://github.com/fachrizalmrsln/news-reader-simple-app/blob/master/component/base/src/main/java/com/fachrizalmrsln/component/base/util/RecyclerViewPaging.kt)
   - [Skeleton Loading](https://github.com/Faltenreich/SkeletonLayout)
   - [Swipe Layout](https://github.com/anzaizai/EasySwipeMenuLayout)
@@ -42,6 +41,12 @@ News Reader Simple App is just news-based application. I'm using this [API](http
   ![Alt text](/screenshots/Repository_Pattern.png?raw=true "Repository Pattern")
   
   Get to know more about [Repository Pattern](https://developer.android.com/jetpack/guide)
+  
+  - Offline First
+  
+  ![Alt text](/screenshots/Offline_First.png?raw=true "Repository Pattern")
+  
+  Found this beautiful ilustration from this [article](https://medium.com/@jeremyrempel/offline-first-applications-pt-1-the-blueprint-9f518aa374dd) go give it a clap!
   
 # Authors
 Fachrizal A. Z. Mursalin
