@@ -42,6 +42,12 @@ News Reader Simple App is just news-based application. I'm using this [API](http
   
   Get to know more about [Repository Pattern](https://developer.android.com/jetpack/guide)
   
-  
+# Issues
+I'm still cannot figure it out how to keep the bookmark state in the News-List Screen. So the UI will look wierd overthere. 
+
+Lets said the item with id 223 get bookmarked from the list. The bookmark icon should be on the state bookmark (with icon bookmark fully white and the text appear is Bookmarked), but whenever the item get recyling or the app get close, the bookmark state on that item with id 223 is not on the bookmark state. I get it that i need to compare the list from the server with the list from my local database, i just can't figure it out how to do that approach.
+
+Feel free to give me some clues or just contribute to this project!
+
 # Authors
 Fachrizal A. Z. Mursalin
