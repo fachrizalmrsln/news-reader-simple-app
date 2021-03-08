@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fachrizalmrsln.component.base.activity.BaseViewBindingActivity
-import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
-import com.fachrizalmrsln.component.base.extensions.getTotalPage
+import com.fachrizalmrsln.component.base.database.NewsListEntity
 import com.fachrizalmrsln.component.base.extensions.gone
 import com.fachrizalmrsln.component.base.extensions.loadImageFromAssets
 import com.fachrizalmrsln.component.base.extensions.visible
 import com.fachrizalmrsln.component.base.navigation.IAppNavigation
 import com.fachrizalmrsln.component.base.util.RecyclerViewPaging
-import com.fachrizalmrsln.features.news_data.response.Row
 import com.fachrizalmrsln.features.news_list.R
 import com.fachrizalmrsln.features.news_list.databinding.ActivityNewsListBinding
 import com.faltenreich.skeletonlayout.Skeleton
@@ -32,7 +30,8 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
 
     private var mPage = 1
     private var mFirstLoading = true
-    private var mTotalPage = 0
+    private var mTotalPage = 10
+    private var mPosition = 0
 
     private var bookmarkIsEmpty = false
     private var isBookmarkListShow = false
@@ -70,8 +69,7 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
             }
         }
         viewModel.newsListResponse.observe(this) { response ->
-            mTotalPage = response.data.nextPage.getTotalPage()
-            newsListAdapter.insertData(response.data.rows)
+            newsListAdapter.insertData(response)
         }
         viewModel.getDataBookmarkList().observe(this) { newsListBookmark ->
             if (newsListBookmark.isNullOrEmpty()) {
@@ -92,7 +90,9 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
             addOnScrollListener(RecyclerViewPaging {
                 if (mPage <= mTotalPage) {
                     mPage += 1
+                    mPosition += it
                     getNewsListData(mPage)
+                    binding.rvNewsList.scrollToPosition(mPosition)
                 }
             })
         }
@@ -174,14 +174,15 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
                 data.id,
                 data.detailUrl,
                 data.category,
-                data.coverPic?.get(0),
+                data.coverPic,
                 data.publishTime,
                 data.title,
                 data.description
             )
         }
         newsListAdapter.onItemBookmarkClickHandler { data ->
-            bookmarkingItem(data)
+            if (data.isBookmarked) unBookmarkingItem(data)
+            else bookmarkingItem(data)
         }
     }
 
@@ -212,21 +213,22 @@ class NewsListActivity : BaseViewBindingActivity<ActivityNewsListBinding>() {
         launch { viewModel.getNewsList(page) }
     }
 
-    private fun bookmarkingItem(data: Row) {
-        val dataBookmark = NewsBookmarkEntity(
+    private fun bookmarkingItem(data: NewsListEntity) {
+        val dataBookmark = NewsListEntity(
             id = data.id,
             title = data.title,
             category = data.category,
             description = data.description,
             detailUrl = data.detailUrl,
             publishTime = data.publishTime,
-            coverPic = data.coverPic?.get(0)
+            coverPic = data.coverPic,
+            isBookmarked = true
         )
         viewModel.bookmarkingData(dataBookmark)
     }
 
-    private fun unBookmarkingItem(data: NewsBookmarkEntity) {
-        val dataBookmark = NewsBookmarkEntity(
+    private fun unBookmarkingItem(data: NewsListEntity) {
+        val dataBookmark = NewsListEntity(
             id = data.id,
             title = data.title,
             category = data.category,

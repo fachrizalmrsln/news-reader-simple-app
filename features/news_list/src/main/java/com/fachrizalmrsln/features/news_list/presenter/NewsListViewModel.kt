@@ -1,27 +1,24 @@
 package com.fachrizalmrsln.features.news_list.presenter
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
-import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
+import com.fachrizalmrsln.component.base.database.NewsListEntity
 import com.fachrizalmrsln.component.base.viewmodel.BaseViewModel
 import com.fachrizalmrsln.component.base.viewmodel.Message
-import com.fachrizalmrsln.features.news_data.response.NewsListResponse
+import com.fachrizalmrsln.features.news_data.response.Row
 import com.fachrizalmrsln.features.news_list.repository.NewsListCatalogueRepository
 
 class NewsListViewModel(
     private val repository: NewsListCatalogueRepository
 ) : BaseViewModel() {
 
-    private val _newsListResponse = MutableLiveData<NewsListResponse>()
-    val newsListResponse: LiveData<NewsListResponse>
-        get() = _newsListResponse
+    val newsListResponse = repository.getNewsList()
 
     suspend fun getNewsList(pageNumber: Int) {
         showLoading()
         repository.getNewsList(pageNumber).onResultShow({ newsListResponse ->
             if (newsListResponse != null) {
-                _newsListResponse.value = newsListResponse
+                insertToDB(newsListResponse.data.rows)
                 hideLoading()
             }
         }, { exception ->
@@ -30,16 +27,34 @@ class NewsListViewModel(
         })
     }
 
-    fun bookmarkingData(dataBookmark: NewsBookmarkEntity) {
+    fun bookmarkingData(dataBookmark: NewsListEntity) {
         repository.bookmarkingData(dataBookmark)
     }
 
-    fun getDataBookmarkList(): LiveData<PagedList<NewsBookmarkEntity>> {
+    fun getDataBookmarkList(): LiveData<PagedList<NewsListEntity>> {
         return repository.getDataBookmark()
     }
 
-    fun unBookmarkingData(dataBookmark: NewsBookmarkEntity) {
+    fun unBookmarkingData(dataBookmark: NewsListEntity) {
         repository.unBookmarkingData(dataBookmark)
+    }
+
+    private fun insertToDB(data: List<Row>) {
+        val dataToDB = mutableListOf<NewsListEntity>()
+        data.map {
+            dataToDB.add(
+                NewsListEntity(
+                    id = it.id,
+                    title = it.title,
+                    description = it.description,
+                    category = it.category,
+                    detailUrl = it.detailUrl,
+                    publishTime = it.publishTime,
+                    coverPic = it.coverPic?.get(0)
+                )
+            )
+        }
+        repository.insertNewsListToDB(dataToDB)
     }
 
 }

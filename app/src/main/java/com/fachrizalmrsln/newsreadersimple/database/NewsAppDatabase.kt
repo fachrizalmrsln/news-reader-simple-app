@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
 import com.fachrizalmrsln.component.base.database.NewsDAO
+import com.fachrizalmrsln.component.base.database.NewsListEntity
 
 @Database(
-    entities = [NewsBookmarkEntity::class],
+    entities = [NewsListEntity::class],
     version = 1
 )
 abstract class NewsAppDatabase : RoomDatabase() {

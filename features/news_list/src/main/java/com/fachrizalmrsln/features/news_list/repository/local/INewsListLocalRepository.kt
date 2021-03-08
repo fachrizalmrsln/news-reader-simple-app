@@ -2,14 +2,18 @@ package com.fachrizalmrsln.features.news_list.repository.local
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.fachrizalmrsln.component.base.database.NewsBookmarkEntity
+import com.fachrizalmrsln.component.base.database.NewsListEntity
 
 interface INewsListLocalRepository {
 
-    fun bookmarkingData(dataBookmark: NewsBookmarkEntity)
+    fun insertNewsListToDB(dataNewsList: List<NewsListEntity>)
 
-    fun getDataBookmark(): LiveData<PagedList<NewsBookmarkEntity>>
+    fun getNewsList(): LiveData<PagedList<NewsListEntity>>
 
-    fun unBookmarkingData(dataBookmark: NewsBookmarkEntity)
+    fun bookmarkingData(dataBookmark: NewsListEntity)
+
+    fun getDataBookmark(): LiveData<PagedList<NewsListEntity>>
+
+    fun unBookmarkingData(dataBookmark: NewsListEntity)
 
 }
