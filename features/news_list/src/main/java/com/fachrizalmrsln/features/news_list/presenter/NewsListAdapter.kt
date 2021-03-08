@@ -69,6 +69,7 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.NewsListViewHolder>
             listener: (data: Row) -> Unit,
             bookmarkListener: (data: Row) -> Unit
         ) {
+            ivBookmark.loadImageFromAssets(R.drawable.ic_bookmark)
             val imageBackDrop = data.coverPic?.get(0)
 
             if (imageBackDrop != null) ivBackDrop.loadImage(
