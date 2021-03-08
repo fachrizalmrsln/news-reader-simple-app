@@ -13,6 +13,7 @@ News Reader Simple App is just news-based application. I'm using this [API](http
 
 # Teach Stack
   - [Kotlin](https://developer.android.com/kotlin)
+  - [Offline First](https://joshuapark82.medium.com/android-offline-first-architecture-using-mvvm-with-flow-f7a09a7aa281)
   - [Endless Scroll View](https://github.com/fachrizalmrsln/news-reader-simple-app/blob/master/component/base/src/main/java/com/fachrizalmrsln/component/base/util/RecyclerViewPaging.kt)
   - [Skeleton Loading](https://github.com/Faltenreich/SkeletonLayout)
   - [Swipe Layout](https://github.com/anzaizai/EasySwipeMenuLayout)
