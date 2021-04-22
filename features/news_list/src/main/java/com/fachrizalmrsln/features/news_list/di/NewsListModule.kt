@@ -1,6 +1,6 @@
 package com.fachrizalmrsln.features.news_list.di
 
-import com.fachrizalmrsln.features.news_list.presenter.NewsListViewModel
+import com.fachrizalmrsln.features.news_list.presentation.NewsListViewModel
 import com.fachrizalmrsln.features.news_list.repository.NewsListCatalogueRepository
 import com.fachrizalmrsln.features.news_list.repository.local.INewsListLocalRepository
 import com.fachrizalmrsln.features.news_list.repository.local.NewsListLocalRepository

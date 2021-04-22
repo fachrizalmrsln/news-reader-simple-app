@@ -2,8 +2,8 @@ package com.fachrizalmrsln.newsreadersimple.navigation
 
 import android.content.Context
 import com.fachrizalmrsln.component.base.navigation.IAppNavigation
-import com.fachrizalmrsln.features.news_detail.presenter.NewsDetailActivity
-import com.fachrizalmrsln.features.news_list.presenter.NewsListActivity
+import com.fachrizalmrsln.features.news_detail.presentation.NewsDetailActivity
+import com.fachrizalmrsln.features.news_list.presentation.NewsListActivity
 import splitties.activities.start
 
 class AppNavigation : IAppNavigation {

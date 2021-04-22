@@ -1,4 +1,4 @@
-package com.fachrizalmrsln.features.news_detail.presenter
+package com.fachrizalmrsln.features.news_detail.presentation
 
 import androidx.lifecycle.LiveData
 import com.fachrizalmrsln.component.base.database.NewsListEntity

@@ -3,7 +3,7 @@
     package="com.fachrizalmrsln.features.news_list">
 
     <application>
-        <activity android:name=".presenter.NewsListActivity" />
+        <activity android:name=".presentation.NewsListActivity" />
     </application>
 
 </manifest>

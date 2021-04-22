@@ -1,4 +1,4 @@
-package com.fachrizalmrsln.features.news_detail.presenter
+package com.fachrizalmrsln.features.news_detail.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle

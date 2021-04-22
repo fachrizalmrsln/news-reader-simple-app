@@ -1,4 +1,4 @@
-package com.fachrizalmrsln.features.news_list.presenter
+package com.fachrizalmrsln.features.news_list.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

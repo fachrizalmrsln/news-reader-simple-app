@@ -1,6 +1,6 @@
 package com.fachrizalmrsln.features.news_detail.di
 
-import com.fachrizalmrsln.features.news_detail.presenter.NewsDetailViewModel
+import com.fachrizalmrsln.features.news_detail.presentation.NewsDetailViewModel
 import com.fachrizalmrsln.features.news_detail.repository.NewsDetailCatalogueRepository
 import com.fachrizalmrsln.features.news_detail.repository.local.INewsDetailLocalRepository
 import com.fachrizalmrsln.features.news_detail.repository.local.NewsDetailLocalRepository
